@@ -1,13 +1,13 @@
-﻿using SmartFeedback.Scripts.Models;
+﻿using SmartFeedback.Scripts.Entities;
 
 namespace SmartFeedback.Scripts.Interfaces;
 
 public interface IProjectService
 {
-    public Task<Project?> Add(Project project);
-    public Task<bool> Delete(int id);
-    public Task<bool> UnDelete(int id);
-    public Task<Project?> Update(Project project);
-    public Task<Project?> Get(int id);
-    public Task<List<Project>> GetAll(int count = -1);
+    public Task<Project?> AddProject(Project project);
+    public Task<bool> DeleteProject(int id);
+    public Task<bool> UnDeleteProject(int id);
+    public Task<Project?> UpdateProject(Project project);
+    public Task<Project?> GetProject(int id);
+    public Task<List<Project>> GetAllProject(int count = -1);
 }

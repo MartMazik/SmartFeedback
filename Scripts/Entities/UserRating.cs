@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using SmartFeedback.Scripts.Interfaces;
 
-namespace SmartFeedback.Scripts.Models;
+namespace SmartFeedback.Scripts.Entities;
 
 public class UserRating : IModel
 {

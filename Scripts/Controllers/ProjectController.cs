@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SmartFeedback.Scripts.Entities;
 using SmartFeedback.Scripts.Interfaces;
-using SmartFeedback.Scripts.Models;
 
 namespace SmartFeedback.Scripts.Controllers;
 
@@ -18,19 +18,19 @@ public class ProjectController : ControllerBase
     [HttpGet]
     public async Task<List<Project>> Get()
     {
-        return await _projectService.GetAll();
+        return await _projectService.GetAllProject();
     }
 
     [HttpGet("{id:int}")]
     public async Task<Project?> Get(int id)
     {
-        return await _projectService.Get(id);
+        return await _projectService.GetProject(id);
     }
 
     [HttpPost]
     public async Task<IActionResult> Post(Project project)
     {
-        var temp = await _projectService.Add(project);
+        var temp = await _projectService.AddProject(project);
         if (temp == null) return BadRequest();
         return Ok();
     }
@@ -38,7 +38,7 @@ public class ProjectController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> Put(Project project)
     {
-        var temp = await _projectService.Update(project);
+        var temp = await _projectService.UpdateProject(project);
         if (temp == null) return BadRequest();
         return Ok();
     }
@@ -46,7 +46,7 @@ public class ProjectController : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var temp = await _projectService.Delete(id);
+        var temp = await _projectService.DeleteProject(id);
         if (!temp) return BadRequest();
         return Ok();
     }
@@ -54,7 +54,7 @@ public class ProjectController : ControllerBase
     [HttpPut("undelete/{id}")]
     public async Task<IActionResult> UnDelete(int id)
     {
-        var temp = await _projectService.UnDelete(id);
+        var temp = await _projectService.UnDeleteProject(id);
         if (!temp) return BadRequest();
         return Ok();
     }

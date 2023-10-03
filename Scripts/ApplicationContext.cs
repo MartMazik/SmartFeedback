@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmartFeedback.Scripts.Models;
+using SmartFeedback.Scripts.Entities;
 
 namespace SmartFeedback.Scripts;
 

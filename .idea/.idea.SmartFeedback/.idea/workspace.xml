@@ -10,27 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a9d787f-66a7-4a87-96c5-4004f3f7a32f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Migrations/20230926171212_AddModels.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20230926171212_AddModels.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20230926171830_AddModels_v2.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20230926171830_AddModels_v2.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20230926172004_AddModels_v3.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20230926172004_AddModels_v3.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/ApplicationContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Interfaces/IModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Models/ConnectTextsObjects.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Models/Project.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Models/TextObject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Models/UserRating.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Services/ProjectService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/WeatherForecastController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartFeedback.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedback.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WeatherForecast.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Interfaces/ISearchTextsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Interfaces/ITextService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Interfaces/TextProject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Models/TextService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Services/ConnectTextsObjectsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Services/SearchTextsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Services/UserRatingService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Models/ConnectTextsObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/ConnectTextsObjects.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Models/Project.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/Project.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Models/TextObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/TextObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Models/UserRating.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/UserRating.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Services/ProjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/ProjectService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +33,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MartMazik&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="71fe492c-658c-49b4-b5c1-07e52ed781a8" />
+        <option name="url" value="https://github.com/MartMazik/SmartFeedback.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b4aa9d6deee74e2a511d54506de2de864a4b58ad22637cbbc79ef58cb10e3e9/ConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
@@ -178,7 +186,13 @@
       <workItem from="1695743531869" duration="758000" />
       <workItem from="1695745627660" duration="14556000" />
       <workItem from="1695922001192" duration="151000" />
-      <workItem from="1695922280521" duration="7054000" />
+      <workItem from="1695922280521" duration="7169000" />
+      <workItem from="1696009325179" duration="525000" />
+      <workItem from="1696009894498" duration="4270000" />
+      <workItem from="1696093261479" duration="594000" />
+      <workItem from="1696256004156" duration="28000" />
+      <workItem from="1696256312484" duration="860000" />
+      <workItem from="1696259924402" duration="2535000" />
     </task>
     <task id="LOCAL-00001" summary="Create Project">
       <option name="closed" value="true" />
@@ -188,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695664137761</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Create Models">
+      <option name="closed" value="true" />
+      <created>1695934511570</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695934511570</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +239,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Create Project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create Project" />
+    <MESSAGE value="Create Models" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Models" />
   </component>
 </project>

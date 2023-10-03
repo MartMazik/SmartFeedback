@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SmartFeedback.Scripts.Entities;
 using SmartFeedback.Scripts.Interfaces;
-using SmartFeedback.Scripts.Models;
 
 namespace SmartFeedback.Scripts.Services;
 
@@ -13,14 +13,14 @@ public class ProjectService : IProjectService
         _db = db;
     }
 
-    public async Task<Project?> Add(Project project)
+    public async Task<Project?> AddProject(Project project)
     {
         _db.Projects.Add(project);
         await _db.SaveChangesAsync();
         return project;
     }
 
-    public async Task<bool> Delete(int id)
+    public async Task<bool> DeleteProject(int id)
     {
         var project = _db.Projects.FirstOrDefault(p => p.Id == id);
         if (project == null) return false;
@@ -29,7 +29,7 @@ public class ProjectService : IProjectService
         return true;
     }
 
-    public async Task<bool> UnDelete(int id)
+    public async Task<bool> UnDeleteProject(int id)
     {
         var project = _db.Projects.FirstOrDefault(p => p.Id == id);
         if (project == null) return false;
@@ -38,7 +38,7 @@ public class ProjectService : IProjectService
         return true;
     }
 
-    public async Task<Project?> Update(Project project)
+    public async Task<Project?> UpdateProject(Project project)
     {
         var oldProject = _db.Projects.FirstOrDefault(p => p.Id == project.Id);
         if (oldProject == null) return null;
@@ -47,12 +47,12 @@ public class ProjectService : IProjectService
         return oldProject;
     }
 
-    public async Task<Project?> Get(int id)
+    public async Task<Project?> GetProject(int id)
     {
         return await _db.Projects.FirstOrDefaultAsync(p => p.Id == id);
     }
 
-    public async Task<List<Project>> GetAll(int count = -1)
+    public async Task<List<Project>> GetAllProject(int count = -1)
     {
         return count == -1 ? await _db.Projects.ToListAsync() : await _db.Projects.Take(count).ToListAsync();
     }

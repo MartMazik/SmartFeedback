@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using SmartFeedback.Scripts.Interfaces;
 
-namespace SmartFeedback.Scripts.Models;
+namespace SmartFeedback.Scripts.Entities;
 
 public class Project : IModel
 {
