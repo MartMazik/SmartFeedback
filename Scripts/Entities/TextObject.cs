@@ -4,7 +4,7 @@ using SmartFeedback.Scripts.Interfaces;
 
 namespace SmartFeedback.Scripts.Entities;
 
-public class TextObject : IModel
+public class TextObject : IEntity
 {
     [Key] public int Id { get; set; }
     public bool IsDeleted { get; set; }

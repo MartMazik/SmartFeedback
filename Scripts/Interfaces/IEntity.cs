@@ -1,6 +1,6 @@
 ﻿namespace SmartFeedback.Scripts.Interfaces;
 
-public interface IModel
+public interface IEntity
 {
     public int Id { get; set; }
 

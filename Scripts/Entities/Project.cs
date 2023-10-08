@@ -3,7 +3,7 @@ using SmartFeedback.Scripts.Interfaces;
 
 namespace SmartFeedback.Scripts.Entities;
 
-public class Project : IModel
+public class Project : IEntity
 {
     [Key] public int Id { get; set; }
     public bool IsDeleted { get; set; }
