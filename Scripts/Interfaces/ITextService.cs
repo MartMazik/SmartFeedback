@@ -1,14 +1,14 @@
-﻿using SmartFeedback.Scripts.Entities;
+﻿using SmartFeedback.Scripts.Models;
 
 namespace SmartFeedback.Scripts.Interfaces;
 
 public interface ITextService
 {
-    public Task<TextObject?> AddOneText(TextObject textObject);
-    public Task<List<TextObject>> AddMoreText(List<TextObject> textObjects);
-    public Task<bool> DeleteText(int id);
-    public Task<bool> UnDeleteText(int id);
-    public Task<TextObject?> UpdateText(TextObject textObject);
-    public Task<TextObject?> GetText(int id);
-    public Task<List<TextObject>> GetAllText(int count = -1);
+    public Task<TextObjectModel?> AddOneText(TextObjectModel textObjectModel);
+    public Task<List<TextObjectModel>> AddMoreText(List<TextObjectModel> textObjectModels);
+    public Task<bool> DeleteText(int textId);
+    public Task<bool> UnDeleteText(int textId);
+    public Task<TextObjectModel?> UpdateText(TextObjectModel textObjectModel);
+    public Task<TextObjectModel?> GetText(int textId);
+    public Task<List<TextObjectModel>> GetProjectsTexts(int projectId);
 }

@@ -6,14 +6,18 @@ namespace SmartFeedback.Scripts.Entities;
 
 public class UserRating : IEntity
 {
-    [Key] public int Id { get; set; }
+    [Key]
+    public int Id { get; set; }
+    
     public bool IsDeleted { get; set; }
-    [MaxLength(512)] [Required] public string UserId { get; set; }
+    
+    [MaxLength(512)] [Required]
+    public string UserId { get; set; }
 
-    [Required] public bool IsLike { get; set; }
-
-    [ForeignKey("TextObjectId")]
     [Required]
+    public bool IsLike { get; set; }
+
+    [ForeignKey("TextObjectId")] [Required]
     public TextObject TextObject { get; set; }
 
 

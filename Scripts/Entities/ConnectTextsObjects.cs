@@ -17,17 +17,10 @@ public class ConnectTextsObjects : IEntity
     [Required]
     public TextObject SecondTextObject { get; set; }
 
-    [Required] public double Coincidence { get; set; }
-
+    [Required]
+    public double Coincidence { get; set; }
 
     public ConnectTextsObjects()
     {
-    }
-
-    public ConnectTextsObjects(TextObject firstTextObject, TextObject secondTextObject, double coincidence)
-    {
-        FirstTextObject = firstTextObject;
-        SecondTextObject = secondTextObject;
-        Coincidence = coincidence;
     }
 }

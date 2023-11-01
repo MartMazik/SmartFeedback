@@ -1,9 +1,8 @@
-﻿using SmartFeedback.Scripts.Entities;
+﻿using SmartFeedback.Scripts.Models;
 
 namespace SmartFeedback.Scripts.Interfaces;
 
 public interface ITextRatingService
 {
-    public Task<bool> SetRating(UserRating userRating);
-    public Task<bool> RemoveRating(UserRating userRating);
+    public Task<bool> SetRating(UserRatingModel userRatingModel);
 }

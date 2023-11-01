@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartFeedback.Scripts.Entities;
 using SmartFeedback.Scripts.Interfaces;
+using SmartFeedback.Scripts.Models;
 
 namespace SmartFeedback.Scripts.Services;
 
@@ -13,47 +14,50 @@ public class ProjectService : IProjectService
         _db = db;
     }
 
-    public async Task<Project?> AddProject(Project project)
+    public async Task<ProjectModel?> AddProject(string projectName)
     {
-        _db.Projects.Add(project);
+        var newProject = new Project(projectName);
+        _db.Projects.Add(newProject);
         await _db.SaveChangesAsync();
-        return project;
+        return new ProjectModel(newProject);
     }
 
-    public async Task<bool> DeleteProject(int id)
+    public async Task<bool> DeleteProject(int projectId)
     {
-        var project = _db.Projects.FirstOrDefault(p => p.Id == id);
+        var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
         if (project == null) return false;
         project.IsDeleted = true;
         await _db.SaveChangesAsync();
         return true;
     }
 
-    public async Task<bool> UnDeleteProject(int id)
+    public async Task<bool> UnDeleteProject(int projectId)
     {
-        var project = _db.Projects.FirstOrDefault(p => p.Id == id);
+        var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
         if (project == null) return false;
         project.IsDeleted = false;
         await _db.SaveChangesAsync();
         return true;
     }
 
-    public async Task<Project?> UpdateProject(Project project)
+    public async Task<ProjectModel?> UpdateProject(ProjectModel projectModel)
     {
-        var oldProject = _db.Projects.FirstOrDefault(p => p.Id == project.Id);
+        var oldProject = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectModel.Id);
         if (oldProject == null) return null;
-        oldProject.Name = project.Name;
+        oldProject.Name = projectModel.Name;
         await _db.SaveChangesAsync();
-        return oldProject;
+        return new ProjectModel(oldProject);
     }
 
-    public async Task<Project?> GetProject(int id)
+    public async Task<ProjectModel?> GetProject(int projectId)
     {
-        return await _db.Projects.FirstOrDefaultAsync(p => p.Id == id);
+        var project = await _db.Projects.FirstOrDefaultAsync(p => p.Id == projectId);
+        return project == null ? null : new ProjectModel(project);
     }
 
-    public async Task<List<Project>> GetAllProject(int count = -1)
+    public async Task<List<ProjectModel>> GetAllProject(int count = -1)
     {
-        return count == -1 ? await _db.Projects.ToListAsync() : await _db.Projects.Take(count).ToListAsync();
+        var projects = count == -1 ? await _db.Projects.ToListAsync() : await _db.Projects.Take(count).ToListAsync();
+        return projects.Select(project => new ProjectModel(project)).ToList();
     }
 }

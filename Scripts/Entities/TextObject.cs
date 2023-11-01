@@ -6,13 +6,18 @@ namespace SmartFeedback.Scripts.Entities;
 
 public class TextObject : IEntity
 {
-    [Key] public int Id { get; set; }
+    [Key]
+    public int Id { get; set; }
+    
     public bool IsDeleted { get; set; }
-    [MaxLength(3000)] [Required] public string Text { get; set; }
 
-    [MaxLength(3000)] public string TechnicalText { get; set; }
+    [MaxLength(3000)] [Required] public string Content { get; set; } = "";
 
-    [ForeignKey("ProjectId")] [Required] public Project Project { get; set; }
+    [MaxLength(3000)]
+    public string TechnicalText { get; set; } = "";
+
+    [ForeignKey("ProjectId")] [Required]
+    public Project Project { get; set; }
 
     public int AnalogCount { get; set; }
 
@@ -20,19 +25,13 @@ public class TextObject : IEntity
 
     public int RatingSum { get; set; }
 
-
     public TextObject()
     {
     }
 
-    public TextObject(string text, string technicalText, Project project, int analogCount, int userRatingCount,
-        int ratingSum)
+    public TextObject(string content, Project project)
     {
-        Text = text;
-        TechnicalText = technicalText;
+        Content = content;
         Project = project;
-        AnalogCount = analogCount;
-        UserRatingCount = userRatingCount;
-        RatingSum = ratingSum;
     }
 }

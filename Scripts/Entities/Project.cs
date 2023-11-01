@@ -5,10 +5,13 @@ namespace SmartFeedback.Scripts.Entities;
 
 public class Project : IEntity
 {
-    [Key] public int Id { get; set; }
+    [Key]
+    public int Id { get; set; }
+    
     public bool IsDeleted { get; set; }
-    [MaxLength(50)] [Required] public string Name { get; set; }
-
+    
+    [MaxLength(50)] [Required]
+    public string Name { get; set; }
 
     public Project()
     {

@@ -1,10 +1,9 @@
-﻿using SmartFeedback.Scripts.Entities;
-using SmartFeedback.Scripts.Models;
+﻿using SmartFeedback.Scripts.Models;
 
 namespace SmartFeedback.Scripts.Interfaces;
 
 public interface ISearchTextsService
 {
-    public Task<TextObject?> GetText(int id);
-    public Task<TextObject?> GetText(TextProjectModel textProjectModel);
+    public Task<List<TextObjectModel>> GetSimilarTexts(TextObjectModel textObjectModel);
+    public Task<List<TextObjectModel>> GetSimilarTextsById(int textId);
 }
