@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SmartFeedback.Scripts;
 using SmartFeedback.Scripts.Interfaces;
 using SmartFeedback.Scripts.Services;
+using SmartFeedback.Scripts.Services.PostgreSQL;
 
 var builder = WebApplication.CreateBuilder(args);
 

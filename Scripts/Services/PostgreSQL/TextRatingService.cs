@@ -3,7 +3,7 @@ using SmartFeedback.Scripts.Entities;
 using SmartFeedback.Scripts.Interfaces;
 using SmartFeedback.Scripts.Models;
 
-namespace SmartFeedback.Scripts.Services;
+namespace SmartFeedback.Scripts.Services.PostgreSQL;
 
 public class TextRatingService : ITextRatingService
 {
@@ -30,7 +30,18 @@ public class TextRatingService : ITextRatingService
             rating.IsLike = userRatingModel.IsLike;
         }
         await _db.SaveChangesAsync();
-
+        
+        return await CalculationRatingCount(textObject.Id);
+    }
+    
+    private async Task<bool> CalculationRatingCount(int textObjectId)
+    {
+        var textObject = await _db.TextObjects.FirstOrDefaultAsync(x => x.Id == textObjectId);
+        if (textObject == null) return false;
+        var ratingCount = await _db.UserRatings.CountAsync(x => x.TextObject.Id == textObject.Id && x.IsLike);
+        textObject.UserRatingCount = ratingCount;
+        textObject.RatingSum = textObject.AnalogCount + textObject.UserRatingCount;
+        await _db.SaveChangesAsync();
         return true;
     }
 }

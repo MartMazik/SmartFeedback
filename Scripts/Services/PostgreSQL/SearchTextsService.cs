@@ -2,7 +2,7 @@
 using SmartFeedback.Scripts.Interfaces;
 using SmartFeedback.Scripts.Models;
 
-namespace SmartFeedback.Scripts.Services;
+namespace SmartFeedback.Scripts.Services.PostgreSQL;
 
 public class SearchTextsService : ISearchTextsService
 {

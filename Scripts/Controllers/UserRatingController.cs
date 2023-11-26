@@ -18,8 +18,8 @@ public class UserRatingController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post(UserRatingModel userRatingModel)
     {
-        var temp = await _textRatingService.SetRating(userRatingModel);
-        if (!temp) return BadRequest();
+        var ratingResult = await _textRatingService.SetRating(userRatingModel);
+        if (!ratingResult) return BadRequest();
         return Ok();
     }
 }

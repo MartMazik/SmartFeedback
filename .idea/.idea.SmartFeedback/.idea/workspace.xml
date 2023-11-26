@@ -10,31 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a9d787f-66a7-4a87-96c5-4004f3f7a32f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/Controllers/SearchTextsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Controllers/TextObjectController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Controllers/UserRatingController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Models/ProjectModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Models/TextObjectModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Models/UserRatingModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Services/TextObjectService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/ApplicationContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Entities/ConnectTextsObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/ConnectTextsObjects.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Entities/Project.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/Project.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Entities/TextObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/TextObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Entities/UserRating.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/UserRating.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/ISearchTextsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/ISearchTextsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/ITextRatingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/ITextRatingService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/ITextService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/ITextService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Models/TextProjectModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/ConnectTextsObjectsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/TextRatingService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/ProjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/ProjectService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/SearchTextsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/SearchTextsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/TextService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/UserRatingService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/UserRatingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/UserRatingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Services/TextRatingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/TextRatingService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,33 +52,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.editor",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ],
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Mazik\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Mazik\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Mazik\\AppData\\Local\\Symbols\\src&quot;
+    "rider.external.source.directories": [
+      "C:\\Users\\Mazik\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Mazik\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
+      "C:\\Users\\Mazik\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SmartFeedback: IIS Express">
     <configuration name="SmartFeedback: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SmartFeedback.csproj" />
@@ -217,6 +195,17 @@
       <workItem from="1698218340672" duration="2993000" />
       <workItem from="1698754075429" duration="2300000" />
       <workItem from="1698829334702" duration="1203000" />
+      <workItem from="1698930305900" duration="631000" />
+      <workItem from="1698935418786" duration="642000" />
+      <workItem from="1699010949674" duration="1234000" />
+      <workItem from="1699104028106" duration="2021000" />
+      <workItem from="1699173044612" duration="599000" />
+      <workItem from="1699179764855" duration="2071000" />
+      <workItem from="1699448244720" duration="737000" />
+      <workItem from="1699698392767" duration="308000" />
+      <workItem from="1699954181354" duration="959000" />
+      <workItem from="1699962944497" duration="1160000" />
+      <workItem from="1699964147142" duration="1111000" />
     </task>
     <task id="LOCAL-00001" summary="Create Project">
       <option name="closed" value="true" />
