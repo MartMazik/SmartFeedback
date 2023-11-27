@@ -1,24 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
-using SmartFeedback.Scripts.Interfaces;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
-namespace SmartFeedback.Scripts.Entities;
-
-public class Project : IEntity
+namespace SmartFeedback.Scripts.Entities
 {
-    [Key]
-    public int Id { get; set; }
-    
-    public bool IsDeleted { get; set; }
-    
-    [MaxLength(50)] [Required]
-    public string Name { get; set; }
-
-    public Project()
+    public class Project
     {
-    }
+        [BsonId]
+        public ObjectId Id { get; set; }
+        public bool IsDeleted { get; set; }
 
-    public Project(string name)
-    {
-        Name = name;
+        public string Name { get; set; }
+
+        public Project()
+        {
+        }
+
+        public Project(string name)
+        {
+            Name = name;
+        }
     }
 }

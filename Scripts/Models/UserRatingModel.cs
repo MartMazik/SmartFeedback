@@ -1,17 +1,19 @@
-﻿namespace SmartFeedback.Scripts.Models;
+﻿using MongoDB.Bson;
+
+namespace SmartFeedback.Scripts.Models;
 
 public class UserRatingModel
 {
-    public int Id { get; set; }
+    public ObjectId Id { get; set; }
     
-    public int TextObjectId { get; set; }
+    public ObjectId TextObjectId { get; set; }
     
     public string UserId { get; set; } = "";
     
     public bool IsLike { get; set; }
 
 
-    public UserRatingModel(int id, int textObjectId, string userId, bool isLike)
+    public UserRatingModel(ObjectId id, ObjectId textObjectId, string userId, bool isLike)
     {
         Id = id;
         TextObjectId = textObjectId;

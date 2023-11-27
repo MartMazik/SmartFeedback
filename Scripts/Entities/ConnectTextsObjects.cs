@@ -1,26 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using SmartFeedback.Scripts.Interfaces;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
-namespace SmartFeedback.Scripts.Entities;
-
-public class ConnectTextsObjects : IEntity
+namespace SmartFeedback.Scripts.Entities
 {
-    [Key] public int Id { get; set; }
-    public bool IsDeleted { get; set; }
-
-    [ForeignKey("FirstTextObjectId")]
-    [Required]
-    public TextObject FirstTextObject { get; set; }
-
-    [ForeignKey("SecondTextObjectId")]
-    [Required]
-    public TextObject SecondTextObject { get; set; }
-
-    [Required]
-    public double Coincidence { get; set; }
-
-    public ConnectTextsObjects()
+    public class ConnectTextsObjects
     {
+        [BsonId]
+        public ObjectId Id { get; set; }
+        public bool IsDeleted { get; set; }
+
+        [BsonElement("FirstTextObject")]
+        public TextObject FirstTextObject { get; set; }
+
+        [BsonElement("SecondTextObject")]
+        public TextObject SecondTextObject { get; set; }
+
+        public double Coincidence { get; set; }
+
+        public ConnectTextsObjects()
+        {
+        }
     }
 }

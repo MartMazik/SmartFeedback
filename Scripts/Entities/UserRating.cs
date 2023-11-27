@@ -1,34 +1,30 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using SmartFeedback.Scripts.Interfaces;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
-namespace SmartFeedback.Scripts.Entities;
-
-public class UserRating : IEntity
+namespace SmartFeedback.Scripts.Entities
 {
-    [Key]
-    public int Id { get; set; }
-    
-    public bool IsDeleted { get; set; }
-    
-    [MaxLength(512)] [Required]
-    public string UserId { get; set; }
-
-    [Required]
-    public bool IsLike { get; set; }
-
-    [ForeignKey("TextObjectId")] [Required]
-    public TextObject TextObject { get; set; }
-
-
-    public UserRating()
+    public class UserRating
     {
-    }
+        [BsonId]
+        public ObjectId Id { get; set; }
+        public bool IsDeleted { get; set; }
 
-    public UserRating(string userId, bool isLike, TextObject textObject)
-    {
-        UserId = userId;
-        IsLike = isLike;
-        TextObject = textObject;
+        public string UserId { get; set; }
+
+        public bool IsLike { get; set; }
+
+        [BsonElement("TextObject")]
+        public TextObject TextObject { get; set; }
+
+        public UserRating()
+        {
+        }
+
+        public UserRating(string userId, bool isLike, TextObject textObject)
+        {
+            UserId = userId;
+            IsLike = isLike;
+            TextObject = textObject;
+        }
     }
 }

@@ -1,10 +1,11 @@
-﻿using SmartFeedback.Scripts.Entities;
+﻿using MongoDB.Bson;
+using SmartFeedback.Scripts.Entities;
 
 namespace SmartFeedback.Scripts.Models;
 
 public class ProjectModel
 {
-    public int Id { get; set; }
+    public ObjectId Id { get; set; }
     public string Name { get; set; }
     
     
@@ -15,7 +16,7 @@ public class ProjectModel
         Name = newProject.Name;
     }
 
-    public ProjectModel(int id, string name)
+    public ProjectModel(ObjectId id, string name)
     {
         Id = id;
         Name = name;
