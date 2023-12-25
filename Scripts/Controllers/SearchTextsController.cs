@@ -2,28 +2,29 @@
 using SmartFeedback.Scripts.Interfaces;
 using SmartFeedback.Scripts.Models;
 
-namespace SmartFeedback.Scripts.Controllers;
-
-[Route("api/search")]
-[ApiController]
-public class SearchTextsController : ControllerBase
+namespace SmartFeedback.Scripts.Controllers
 {
-    private readonly ISearchTextsService _searchTextsService;
+    [Route("api/search")]
+    [ApiController]
+    public class SearchTextsController : ControllerBase
+    {
+        private readonly ISearchTextsService _searchTextsService;
 
-    public SearchTextsController(ISearchTextsService searchTextsService)
-    {
-        _searchTextsService = searchTextsService;
+        public SearchTextsController(ISearchTextsService searchTextsService)
+        {
+            _searchTextsService = searchTextsService;
+        }
+
+        [HttpGet("get-similar-by-id")]
+        public async Task<List<TextObjectModel>> GetSimilarTexts(string textId, int page, int pageSize)
+        {
+            return await _searchTextsService.GetSimilarTextsById(textId, page, pageSize);
+        }
+
+        [HttpPost("get-similar-by-text")]
+        public async Task<List<TextObjectModel>> GetSimilarTexts(TextObjectModel textObjectModel, int page, int pageSize)
+        {
+            return await _searchTextsService.GetSimilarTexts(textObjectModel, page, pageSize);
+        }
     }
-    
-    [HttpGet("{textId:int}")]
-    public async Task<List<TextObjectModel>> GetSimilarTexts(int textId)
-    {
-        return await _searchTextsService.GetSimilarTextsById(textId);
-    }
-    
-    [HttpPost]
-    public async Task<List<TextObjectModel>> GetSimilarTexts(TextObjectModel textObjectModel)
-    {
-        return await _searchTextsService.GetSimilarTexts(textObjectModel);
-    } 
 }

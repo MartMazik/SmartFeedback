@@ -1,28 +1,27 @@
-﻿using MongoDB.Bson;
-using SmartFeedback.Scripts.Entities;
+﻿using SmartFeedback.Scripts.Entities;
 
 namespace SmartFeedback.Scripts.Models;
 
 public class ProjectModel
 {
-    public ObjectId Id { get; set; }
+    public string Id { get; set; } = "";
     public string Name { get; set; }
     
-    
-    
-    public ProjectModel(Project newProject)
+    public ProjectModel(Project project)
     {
-        Id = newProject.Id;
-        Name = newProject.Name;
+        Id = project.Id.ToString() ?? string.Empty;
+        Name = project.Name;
     }
 
-    public ProjectModel(ObjectId id, string name)
+    public ProjectModel(string id, string name)
     {
         Id = id;
         Name = name;
     }
-
-    public ProjectModel()
+    public ProjectModel(string name)
     {
+        Name = name;
     }
+
+    public ProjectModel() { }
 }

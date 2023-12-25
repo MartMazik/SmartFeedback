@@ -2,70 +2,82 @@
 using SmartFeedback.Scripts.Interfaces;
 using SmartFeedback.Scripts.Models;
 
-namespace SmartFeedback.Scripts.Controllers;
-
-[Route("api/text")]
-[ApiController]
-public class TextObjectController : ControllerBase
+namespace SmartFeedback.Scripts.Controllers
 {
-    private readonly ITextService _textService;
+    [Route("api/text")]
+    [ApiController]
+    public class TextObjectController : ControllerBase
+    {
+        private readonly ITextService _textService;
 
-    public TextObjectController(ITextService textService)
-    {
-        _textService = textService;
-    }
-    
-    
-    
-    [HttpGet("getmore/{projectId:int}")]
-    public async Task<List<TextObjectModel>> GetAll(int projectId)
-    {
-        return await _textService.GetProjectsTexts(projectId);
-    }
-    
-    [HttpGet("getone/{id:int}")]
-    public async Task<TextObjectModel?> Get(int id)
-    {
-        return await _textService.GetText(id);
-    }
-    
-    [HttpPost("addone")]
-    public async Task<IActionResult> AddOne(TextObjectModel textObjectModel)
-    {
-        var temp = await _textService.AddOneText(textObjectModel);
-        if (temp == null) return BadRequest();
-        return Ok();
-    }
-    
-    [HttpPost("addmore")]
-    public async Task<IActionResult> AddMore(List<TextObjectModel> textObjectModels)
-    {
-        var temp = await _textService.AddMoreText(textObjectModels);
-        if (temp.Count == 0) return BadRequest();
-        return Ok();
-    }
-    
-    [HttpPut]
-    public async Task<IActionResult> Put(TextObjectModel textObjectModel)
-    {
-        var temp = await _textService.UpdateText(textObjectModel);
-        if (temp == null) return BadRequest();
-        return Ok();
-    }
-    
-    [HttpDelete("delete/{id:int}")]
-    public async Task<IActionResult> Delete(int id)
-    {
-        var temp = await _textService.DeleteText(id);
-        if (!temp) return BadRequest();
-        return Ok();
-    }
-    
-    [HttpPut("undelete/{id:int}")]
-    public async Task<IActionResult> UnDelete(int id)
-    {
-        var temp = await _textService.UnDeleteText(id);
-        if (!temp) return BadRequest();
-        return Ok();
+        public TextObjectController(ITextService textService)
+        {
+            _textService = textService;
+        }
+
+        [HttpGet("get-few")]
+        public async Task<List<TextObjectModel>> GetAll(string projectId, int page, int pageSize)
+        {
+            return await _textService.GetProjectsTexts(projectId, page, pageSize);
+        }
+
+        [HttpGet("get")]
+        public async Task<TextObjectModel?> Get(string id)
+        {
+            return await _textService.GetText(id);
+        }
+
+        [HttpPost("add")]
+        public async Task<IActionResult> AddOne(TextObjectModel textObjectModel)
+        {
+            var temp = await _textService.AddOneText(textObjectModel);
+            if (temp == null) return BadRequest();
+            return Ok();
+        }
+
+        [HttpPost("add-few")]
+        public async Task<IActionResult> AddMore(List<TextObjectModel> textObjectModels)
+        {
+            var temp = await _textService.AddMoreText(textObjectModels);
+            if (temp.Count == 0) return BadRequest();
+            return Ok();
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> Update(TextObjectModel textObjectModel)
+        {
+            var temp = await _textService.UpdateText(textObjectModel);
+            if (temp == null) return BadRequest();
+            return Ok();
+        }
+
+        [HttpDelete("delete")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var temp = await _textService.DeleteText(id);
+            if (!temp) return BadRequest();
+            return Ok();
+        }
+
+        [HttpPut("undelete")]
+        public async Task<IActionResult> UnDelete(string id)
+        {
+            var temp = await _textService.UnDeleteText(id);
+            if (!temp) return BadRequest();
+            return Ok();
+        }
+
+        [HttpPost("upload")]
+        public async Task<IActionResult> UploadTexts(IFormFile csvFile, string projectId)
+        {
+            if (string.IsNullOrEmpty(projectId))
+            {
+                return BadRequest("ProjectId is required.");
+            }
+
+            var temp = await _textService.UploadTexts(csvFile, projectId);
+            if (!temp) return BadRequest("File is not valid.");
+            return Ok("File uploaded successfully.");
+        }
     }
 }

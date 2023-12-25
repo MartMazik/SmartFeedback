@@ -1,19 +1,27 @@
-﻿using MongoDB.Bson;
+﻿using SmartFeedback.Scripts.Entities;
 
 namespace SmartFeedback.Scripts.Models;
 
 public class UserRatingModel
 {
-    public ObjectId Id { get; set; }
+    public string Id { get; set; }
     
-    public ObjectId TextObjectId { get; set; }
+    public string TextObjectId { get; set; }
     
     public string UserId { get; set; } = "";
     
     public bool IsLike { get; set; }
 
 
-    public UserRatingModel(ObjectId id, ObjectId textObjectId, string userId, bool isLike)
+    public UserRatingModel(UserRating userRating)
+    {
+        Id = userRating.Id.ToString() ?? string.Empty;
+        TextObjectId = userRating.TextObjectId.ToString() ?? string.Empty;
+        UserId = userRating.UserId;
+        IsLike = userRating.IsLike;
+    }
+    
+    public UserRatingModel(string id, string textObjectId, string userId, bool isLike)
     {
         Id = id;
         TextObjectId = textObjectId;
@@ -21,7 +29,5 @@ public class UserRatingModel
         IsLike = isLike;
     }
 
-    public UserRatingModel()
-    {
-    }
+    public UserRatingModel() { }
 }

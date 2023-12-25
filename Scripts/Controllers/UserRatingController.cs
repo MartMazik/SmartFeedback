@@ -15,7 +15,7 @@ public class UserRatingController : ControllerBase
         _textRatingService = textRatingService;
     }
     
-    [HttpPost]
+    [HttpPost("set-rating")]
     public async Task<IActionResult> Post(UserRatingModel userRatingModel)
     {
         var ratingResult = await _textRatingService.SetRating(userRatingModel);

@@ -1,15 +1,14 @@
-﻿using MongoDB.Bson;
-using SmartFeedback.Scripts.Entities;
+﻿using SmartFeedback.Scripts.Entities;
 
 namespace SmartFeedback.Scripts.Models;
 
 public class TextObjectModel
 {
-    public ObjectId Id { get; set; }
+    public string Id { get; set; }
 
     public string Content { get; set; } = "";
     
-    public ObjectId ProjectId { get; set; }
+    public string ProjectId { get; set; }
     
     public int AnalogCount { get; set; }
     
@@ -21,15 +20,15 @@ public class TextObjectModel
     
     public TextObjectModel(TextObject textObject)
     {
-        Id = textObject.Id;
+        Id = textObject.Id.ToString() ?? string.Empty;
         Content = textObject.Content;
-        ProjectId = textObject.Project.Id;
+        ProjectId = textObject.ProjectId.ToString() ?? string.Empty;
         AnalogCount = textObject.AnalogCount;
         UserRatingCount = textObject.UserRatingCount;
         RatingSum = textObject.RatingSum;
     }
 
-    public TextObjectModel(ObjectId id, string content, ObjectId projectId, int analogCount, int userRatingCount, int ratingSum)
+    public TextObjectModel(string id, string content, string projectId, int analogCount, int userRatingCount, int ratingSum)
     {
         Id = id;
         Content = content;
@@ -39,7 +38,5 @@ public class TextObjectModel
         RatingSum = ratingSum;
     }
 
-    public TextObjectModel()
-    {
-    }
+    public TextObjectModel() { }
 }
