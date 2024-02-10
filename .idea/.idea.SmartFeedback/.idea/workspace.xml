@@ -10,49 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a9d787f-66a7-4a87-96c5-4004f3f7a32f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/DataAnalysis/Porter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/DataAnalysis/Preprocessing.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/DataAnalysis/TfidfAlgorithm.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Interfaces/ITextProcessService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/MongoDbSettings.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/Services/Process/TextProcessService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230925205403_Initial.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230925205403_Initial.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230926171212_AddModels.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230926171212_AddModels.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230926171830_AddModels_v2.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230926171830_AddModels_v2.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230926172004_AddModels_v3.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230926172004_AddModels_v3.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230928205138_AddModels_v4.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230928205138_AddModels_v4.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20231009140748_RenameModelsInEntities.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20231009140748_RenameModelsInEntities.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/ApplicationContext.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/SearchTextsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/SearchTextsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/TextObjectController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/TextObjectController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/UserRatingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/UserRatingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Entities/ConnectTextsObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/ConnectTextsObjects.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Entities/Project.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/Project.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Entities/TextObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/TextObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Entities/UserRating.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/UserRating.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/ISearchTextsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/ISearchTextsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/ITextService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/ITextService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Models/ProjectModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Models/ProjectModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Models/TextObjectModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Models/TextObjectModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Models/UserRatingModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Models/UserRatingModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/MongoDbConnector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/MongoDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/ProjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/MongoDB/ProjectService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/SearchTextsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/MongoDB/SearchTextsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/TextObjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/MongoDB/TextObjectService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/TextRatingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/MongoDB/TextRatingService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,6 +226,9 @@
       <workItem from="1703327106105" duration="8620000" />
       <workItem from="1703361828824" duration="4655000" />
       <workItem from="1703500609031" duration="12782000" />
+      <workItem from="1703577194996" duration="417000" />
+      <workItem from="1703621090754" duration="1439000" />
+      <workItem from="1703666840040" duration="2796000" />
     </task>
     <task id="LOCAL-00001" summary="Create Project">
       <option name="closed" value="true" />
