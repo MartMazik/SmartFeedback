@@ -9,10 +9,13 @@ namespace SmartFeedback.Scripts.Controllers
     public class TextObjectController : ControllerBase
     {
         private readonly ITextService _textService;
+        private readonly ITextProcessService _textProcessService;
 
-        public TextObjectController(ITextService textService)
+        public TextObjectController(ITextService textService,
+            ITextProcessService textProcessService)
         {
             _textService = textService;
+            _textProcessService = textProcessService;
         }
 
         [HttpGet("get-few")]
@@ -78,6 +81,30 @@ namespace SmartFeedback.Scripts.Controllers
             var temp = await _textService.UploadTexts(csvFile, projectId);
             if (!temp) return BadRequest("File is not valid.");
             return Ok("File uploaded successfully.");
+        }
+
+        [HttpGet("reload_preprocessing")]
+        public async Task<IActionResult> ReloadPreprocessing(string projectId)
+        {
+            if (string.IsNullOrEmpty(projectId))
+            {
+                return BadRequest("ProjectId is required.");
+            }
+            var temp = await _textProcessService.UpdateTextPreprocessing(projectId);
+            if (!temp) return BadRequest("Text process service error.");
+            return Ok();
+        }
+        
+        [HttpGet("reload_compare_texts")]
+        public async Task<IActionResult> ReloadCompareTexts(string projectId)
+        {
+            if (string.IsNullOrEmpty(projectId))
+            {
+                return BadRequest("ProjectId is required.");
+            }
+            var temp = await _textProcessService.CompareTexts(projectId);
+            if (!temp) return BadRequest("Text compare texts error.");
+            return Ok();
         }
     }
 }

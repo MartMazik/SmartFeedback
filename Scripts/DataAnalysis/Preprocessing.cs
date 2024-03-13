@@ -15,8 +15,8 @@ public static class Preprocessing
     private static string ClearText(string text)
     {
         text = text.ToLower();
-        text = Regex.Replace(text, @"[^\w\s]", "");
-        text = Regex.Replace(text, @"\d", "");
+        text = Regex.Replace(text, @"[^\w\s]", " ");
+        text = Regex.Replace(text, @"\d", " ");
         text = Regex.Replace(text, @"\s+", " ");
         return text;
     }
