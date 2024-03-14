@@ -24,7 +24,7 @@ namespace SmartFeedback.Scripts.Controllers
         [HttpGet("get-few")]
         public async Task<List<ProjectModel>> GetMore(int page, int pageSize)
         {
-            return await _projectService.GetAllProject(page, pageSize);
+            return await _projectService.GetFewProjects(page, pageSize);
         }
 
         [HttpPost("add")]

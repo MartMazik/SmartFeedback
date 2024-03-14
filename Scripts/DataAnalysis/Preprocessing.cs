@@ -1,51 +1,30 @@
-﻿using System.Text.RegularExpressions;
+﻿using IronPython.Runtime;
+using Microsoft.Scripting.Hosting;
+using System.IO;
 
 namespace SmartFeedback.Scripts.DataAnalysis;
 
-public static class Preprocessing
+public class Preprocessing
 {
-    public static string Preprocess(string text)
+    public string Preprocess(string text)
     {
-        text = ClearText(text);
-        text = RemoveStopWords(text);
-        text = Stemming(text);
-        return text;
-    }
+        ScriptEngine engine = 
 
-    private static string ClearText(string text)
-    {
-        text = text.ToLower();
-        text = Regex.Replace(text, @"[^\w\s]", " ");
-        text = Regex.Replace(text, @"\d", " ");
-        text = Regex.Replace(text, @"\s+", " ");
-        return text;
-    }
+        // Получение пути к папке, где находится ваш py-файл
+        string pythonScriptsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Scripts\PythonScripts");
 
-    private static string RemoveStopWords(string text)
-    {
-        // TODO: Реализовать удаление стоп-слов
-        string[] stopWords = new string[]
-        {
-            "а", "без", "более", "больше", "будет", "будто", "бы", "был", "была", "были", "было", "быть", "в", "вам",
-            "вас", "вдруг", "ведь", "во", "вот", "впрочем", "все", "всегда", "всего", "всех", "всю", "вы", "где", "да",
-            "даже", "два", "для", "до", "другой", "его", "ее", "ей", "ему", "если", "есть", "еще", "же", "за", "зачем",
-            "здесь", "и", "из", "или", "им", "иногда", "их", "к", "как", "какая", "какой", "когда", "конечно", "кто",
-            "куда", "ли", "лучше", "между", "меня", "мне", "много", "может", "можно", "мой", "моя", "мы", "на", "над",
-            "надо", "наконец", "нас", "не", "него", "нее", "ней", "нельзя", "нет", "ни", "нибудь", "никогда", "ним",
-            "них", "ничего", "но", "ну", "о", "об", "один", "он", "она", "они", "опять", "от", "перед", "по", "под",
-            "после", "потом", "потому", "почти", "при", "про", "раз", "разве", "с", "сам", "свое", " себе", "себя",
-            "сейчас", "сказал", "сказала", "сказать", "со", "совсем", "так", "такой", "там", "тебя", "тем", "теперь",
-            "то", "тогда", "того", "тоже", "только", "том", "тот", "три", "тут", "ты", "уже", "хорошо", "хоть", "чего",
-            "человек", "чем", "через", "что", "чтоб", "чтобы", "чуть", "эти", "этого", "этой", "этом", "этот", "эту",
-            "я"
-        };
-        
-        return text;
-    }
+        // Добавление пути к папке, где находится ваш py-файл
+        engine.Execute("import sys");
+        engine.Execute($"sys.path.append('{pythonScriptsPath}')");
 
-    private static string Stemming(string text)
-    {
-        return text;
-    }
+        // Создание объекта для доступа к функции из вашего py-файла
+        var scope = engine.CreateScope();
+        engine.ExecuteFile(Path.Combine(pythonScriptsPath, "preprocessing_module.py"), scope);
 
+        // Вызов функции preprocess_text
+        dynamic preprocessFunction = scope.GetVariable("preprocess_text");
+        string result = preprocessFunction(text);
+
+        return result;
+    }
 }

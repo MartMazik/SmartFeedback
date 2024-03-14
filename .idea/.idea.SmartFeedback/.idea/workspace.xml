@@ -10,15 +10,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a9d787f-66a7-4a87-96c5-4004f3f7a32f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/SmartFeedback.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/NUnit/ProjectServiceTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/.idea/python.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/dev/entities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/dev/mongodb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/preprocessing_module.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/PythonScripts/tfidf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SmartFeedback.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/TextObjectController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/TextObjectController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/DataAnalysis/Preprocessing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/DataAnalysis/Preprocessing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Entities/Project.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/Project.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Entities/TextObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/TextObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/MongoDbContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/ProjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/MongoDB/ProjectService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartFeedback.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedback.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,9 +72,8 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7120b88f474759eeb74ce14c48ad3867b88659f9609b237158b7c9de8f7aa4/Python.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/70f617fc68cf47c4af27e06f2b56f801b1c8a8/e0/34d18fd4/List`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d2aabde1f32149d384b8121d05bafdc017ba00/de/440242ff/IMongoCollection`1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -54,35 +87,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.SmartFeedback: IIS Express.executor": "Run",
-    ".NET Launch Settings Profile.SmartFeedback: https.executor": "Run",
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.SmartFeedback: IIS Express.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.SmartFeedback: https.executor&quot;: &quot;Run&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "rider.external.source.directories": [
-      "C:\\Users\\martm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\martm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\martm\\AppData\\Local\\Symbols\\src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\martm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\martm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\martm\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SmartFeedback: IIS Express">
     <configuration name="SmartFeedback: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SmartFeedback.csproj" />
@@ -234,6 +267,10 @@
       <workItem from="1703621090754" duration="1439000" />
       <workItem from="1703666840040" duration="2796000" />
       <workItem from="1710228937060" duration="2273000" />
+      <workItem from="1710396826432" duration="3978000" />
+      <workItem from="1710400911716" duration="1597000" />
+      <workItem from="1710403838249" duration="7308000" />
+      <workItem from="1710419689471" duration="1383000" />
     </task>
     <task id="LOCAL-00001" summary="Create Project">
       <option name="closed" value="true" />

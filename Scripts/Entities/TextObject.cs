@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Python.Runtime;
 using SmartFeedback.Scripts.DataAnalysis;
 using SmartFeedback.Scripts.Models;
 
@@ -7,23 +8,22 @@ namespace SmartFeedback.Scripts.Entities;
 
 public class TextObject
 {
-    [BsonId]
-    public ObjectId Id { get; set; }
-        
+    [BsonId] public ObjectId Id { get; set; }
+
     public bool IsDeleted { get; set; }
-        
+
     public string Content { get; set; } = "";
-        
+
     public string[] ProcessedContend { get; set; } = Array.Empty<string>();
-        
+
     public ObjectId ProjectId { get; set; }
-        
+
     public int AnalogCount { get; set; }
-        
+
     public int UserRatingCount { get; set; }
-        
+
     public int RatingSum { get; set; }
-        
+
     public TextObject(TextObjectModel textObjectModel)
     {
         Id = new ObjectId(textObjectModel.Id);
@@ -38,8 +38,11 @@ public class TextObject
     {
         Content = content;
         ProjectId = new ObjectId(projectId);
-        if (isPreprocessing) ProcessedContend = Preprocessing.Preprocess(Content).Split(" ");
+        
+        if (isPreprocessing) ProcessedContend = Preprocessing.Preprocess(content).Split(" ");
     }
 
-    public TextObject() { }
+    public TextObject()
+    {
+    }
 }

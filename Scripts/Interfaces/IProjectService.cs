@@ -9,5 +9,5 @@ public interface IProjectService
     public Task<bool> UnDeleteProject(string projectId);
     public Task<ProjectModel?> UpdateProject(ProjectModel projectModel);
     public Task<ProjectModel?> GetProject(string projectId);
-    public Task<List<ProjectModel>> GetAllProject(int page = 1, int pageSize = 10);
+    public Task<List<ProjectModel>> GetFewProjects(int page = 1, int pageSize = 10);
 }

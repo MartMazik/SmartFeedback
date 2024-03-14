@@ -1,6 +1,6 @@
 using MongoDB.Driver;
+using Python.Runtime;
 using SmartFeedback.Scripts.Interfaces;
-using SmartFeedback.Scripts.Services;
 using SmartFeedback.Scripts.Services.MongoDB;
 using SmartFeedback.Scripts.Services.Process;
 
@@ -31,11 +31,8 @@ builder.Services.AddScoped<ITextRatingService, TextRatingService>();
 builder.Services.AddScoped<ISearchTextsService, SearchTextsService>();
 builder.Services.AddScoped<ITextProcessService, TextProcessService>();
 
-
-
-
-
 var app = builder.Build();
+
 
 if (app.Environment.IsDevelopment())
 {

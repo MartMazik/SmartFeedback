@@ -8,7 +8,7 @@ public class Project
 {
     [BsonId] public ObjectId Id { get; set; }
 
-    public bool IsDeleted { get; set; }
+    public bool IsDeleted { get; set; } = false;
 
     public string Name { get; set; }
 
