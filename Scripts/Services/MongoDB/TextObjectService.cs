@@ -15,14 +15,15 @@ public class TextObjectService : ITextService
 
     public TextObjectService(IMongoDatabase database, ITextProcessService textProcessService)
     {
-        _texts = database.GetCollection<TextObject>("texts");
-        _projects = database.GetCollection<Project>("projects");
+        _texts = database.GetCollection<TextObject>("text_object");
+        _projects = database.GetCollection<Project>("project");
         _textProcessService = textProcessService;
     }
 
     public async Task<TextObjectModel?> AddOneText(TextObjectModel textObjectModel)
     {
         var textObject = new TextObject(textObjectModel.Content, textObjectModel.ProjectId);
+        await Preprocessing.Preprocess(textObject);
         await _texts.InsertOneAsync(textObject);
         await _textProcessService.CompareTexts(textObjectModel.ProjectId);
         return new TextObjectModel(textObject);
@@ -70,8 +71,7 @@ public class TextObjectService : ITextService
 
     public async Task<List<TextObjectModel>> GetProjectsTexts(string projectId, int page = 1, int pageSize = 10)
     {
-        var objectId = new ObjectId(projectId);
-        var texts = await _texts.Find(x => x.ProjectId == objectId)
+        var texts = await _texts.Find(x => x.ProjectId == projectId)
             .Skip((page - 1) * pageSize).Limit(pageSize).ToListAsync();
         return texts.ConvertAll(textObject => new TextObjectModel(textObject));
     }
@@ -92,7 +92,7 @@ public class TextObjectService : ITextService
             texts.Add(textObject);
         }
         await _texts.InsertManyAsync(texts);
-        await _textProcessService.CompareTexts(projectId);
+        // TODO await _textProcessService.CompareTexts(projectId);
         return true;
     }
 }

@@ -13,18 +13,17 @@ public class TextProcessService : ITextProcessService
 
     public TextProcessService(IMongoDatabase database)
     {
-        _texts = database.GetCollection<TextObject>("texts");
-        _connectTextsObjects = database.GetCollection<ConnectTextsObjects>("connectTextsObjects");
+        _texts = database.GetCollection<TextObject>("text_object");
+        _connectTextsObjects = database.GetCollection<ConnectTextsObjects>("connect_texts_object");
     }
     
     public async Task<bool> UpdateTextPreprocessing(string projectId)
     {
         Console.WriteLine("Start UpdateTextPreprocessing");
-        var objectId = new ObjectId(projectId);
-        var texts = await _texts.Find(x => x.ProjectId == objectId).ToListAsync();
+        var texts = await _texts.Find(x => x.ProjectId == projectId).ToListAsync();
         foreach (var text in texts)
         {
-            text.ProcessedContend = Preprocessing.Preprocess(text.Content).Split(" ");
+            // text.ProcessedContend = Preprocessing.Preprocess(text.Content).Result.Split(" ");
             await _texts.ReplaceOneAsync(x => x.Id == text.Id, text);
         }
         return texts.Count > 0;
@@ -34,8 +33,7 @@ public class TextProcessService : ITextProcessService
     public async Task<bool> CompareTexts(string projectId)
     {
         Console.WriteLine("Start CompareTexts");
-        var objectId = new ObjectId(projectId);
-        var texts = await _texts.Find(x => x.ProjectId == objectId).ToListAsync();
+        var texts = await _texts.Find(x => x.ProjectId == projectId).ToListAsync();
         var connectTextsObjectsList = TfidfAlgorithm.Start(texts);
         await _connectTextsObjects.InsertManyAsync(connectTextsObjectsList);
         return texts.Count > 1;

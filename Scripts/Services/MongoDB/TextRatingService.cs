@@ -11,7 +11,7 @@ public class TextRatingService : ITextRatingService
 
     public TextRatingService(IMongoDatabase database)
     {
-        _textRatings = database.GetCollection<UserRating>("textRatings");
+        _textRatings = database.GetCollection<UserRating>("text_rating");
     }
 
     public async Task<bool> SetRating(UserRatingModel userRatingModel)

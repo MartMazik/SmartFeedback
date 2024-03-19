@@ -8,38 +8,45 @@ namespace SmartFeedback.Scripts.Entities;
 
 public class TextObject
 {
-    [BsonId] public ObjectId Id { get; set; }
+    [BsonId]
+    [BsonElement("_id")]
+    public ObjectId Id { get; set; }
 
+    [BsonElement("is_deleted")]
     public bool IsDeleted { get; set; }
 
+    [BsonElement("content")]
     public string Content { get; set; } = "";
 
-    public string[] ProcessedContend { get; set; } = Array.Empty<string>();
+    [BsonElement("processed_content")]
+    public string[] ProcessedContent { get; set; } = Array.Empty<string>();
 
-    public ObjectId ProjectId { get; set; }
+    [BsonElement("project_id")]
+    public string ProjectId { get; set; }
 
+    [BsonElement("analog_count")]
     public int AnalogCount { get; set; }
 
+    [BsonElement("user_rating_count")]
     public int UserRatingCount { get; set; }
 
+    [BsonElement("rating_sum")]
     public int RatingSum { get; set; }
 
     public TextObject(TextObjectModel textObjectModel)
     {
         Id = new ObjectId(textObjectModel.Id);
         Content = textObjectModel.Content;
-        ProjectId = new ObjectId(textObjectModel.ProjectId);
+        ProjectId = textObjectModel.ProjectId;
         AnalogCount = textObjectModel.AnalogCount;
         UserRatingCount = textObjectModel.UserRatingCount;
         RatingSum = textObjectModel.RatingSum;
     }
 
-    public TextObject(string content, string projectId, bool isPreprocessing = true)
+    public TextObject(string content, string projectId)
     {
         Content = content;
-        ProjectId = new ObjectId(projectId);
-        
-        if (isPreprocessing) ProcessedContend = Preprocessing.Preprocess(content).Split(" ");
+        ProjectId = projectId;
     }
 
     public TextObject()

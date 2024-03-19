@@ -12,7 +12,7 @@ public class SearchTextsService : ISearchTextsService
 
     public SearchTextsService(IMongoDatabase database)
     {
-        _texts = database.GetCollection<TextObject>("texts");
+        _texts = database.GetCollection<TextObject>("text_object");
     }
 
     public async Task<List<TextObjectModel>> GetSimilarTexts(TextObjectModel textObjectModel, int page = 1,

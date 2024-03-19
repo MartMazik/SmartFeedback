@@ -7,15 +7,15 @@ public static class TfidfAlgorithm
     private static double CalculateTf(TextObject document, string term)
     {
         var termFrequency =
-            document.ProcessedContend.Count(word => word.Equals(term, StringComparison.OrdinalIgnoreCase));
-        var totalWords = document.ProcessedContend.Length;
+            document.ProcessedContent.Count(word => word.Equals(term, StringComparison.OrdinalIgnoreCase));
+        var totalWords = document.ProcessedContent.Length;
         return (double)termFrequency / totalWords;
     }
 
     private static double CalculateIdf(IReadOnlyCollection<TextObject> documents, string term)
     {
         var documentCount =
-            documents.Count(doc => doc.ProcessedContend.Contains(term, StringComparer.OrdinalIgnoreCase));
+            documents.Count(doc => doc.ProcessedContent.Contains(term, StringComparer.OrdinalIgnoreCase));
         return Math.Log((double)documents.Count / (1 + documentCount));
     }
 
@@ -36,7 +36,7 @@ public static class TfidfAlgorithm
     
     private static double CompareTexts(TextObject text1, TextObject text2, List<TextObject> allDocuments)
     {
-        var allTerms = text1.ProcessedContend.Union(text2.ProcessedContend).ToArray();
+        var allTerms = text1.ProcessedContent.Union(text2.ProcessedContent).ToArray();
 
         var vector1 = allTerms.Select(term => CalculateTfidf(text1, allDocuments, term)).ToArray();
         var vector2 = allTerms.Select(term => CalculateTfidf(text2, allDocuments, term)).ToArray();

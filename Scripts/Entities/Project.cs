@@ -6,16 +6,23 @@ namespace SmartFeedback.Scripts.Entities;
 
 public class Project
 {
-    [BsonId] public ObjectId Id { get; set; }
+    [BsonId]
+    [BsonElement("_id")]
+    public ObjectId Id { get; set; }
 
+    [BsonElement("is_deleted")]
     public bool IsDeleted { get; set; } = false;
 
-    public string Name { get; set; }
-
+    [BsonElement("title")]
+    public string Title { get; set; }
+    
+    [BsonElement("language")]
+    public string Language { get; set; }
+    
     public Project(ProjectModel projectModel)
     {
         Id = new ObjectId(projectModel.Id);
-        Name = projectModel.Name;
+        Title = projectModel.Name;
     }
     
     public Project()

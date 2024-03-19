@@ -12,12 +12,12 @@ public class ProjectService : IProjectService
 
     public ProjectService(IMongoDatabase database)
     {
-        _projects = database.GetCollection<Project>("projects");
+        _projects = database.GetCollection<Project>("project");
     }
 
     public async Task<ProjectModel?> AddProject(string projectName)
     {
-        var project = new Project { Name = projectName };
+        var project = new Project { Title = projectName };
         await _projects.InsertOneAsync(project);
             
         return new ProjectModel(project);
@@ -54,7 +54,7 @@ public class ProjectService : IProjectService
         var project = await _projects.Find(x => x.Id == objectId).FirstOrDefaultAsync();
         if (project == null) return null;
         
-        project.Name = projectModel.Name;
+        project.Title = projectModel.Name;
         
         await _projects.ReplaceOneAsync(x => x.Id == project.Id, project);
         return new ProjectModel(project);

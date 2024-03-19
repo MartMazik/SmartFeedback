@@ -10,7 +10,7 @@ public class ProjectModel
     public ProjectModel(Project project)
     {
         Id = project.Id.ToString() ?? string.Empty;
-        Name = project.Name;
+        Name = project.Title;
     }
 
     public ProjectModel(string id, string name)

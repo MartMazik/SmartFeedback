@@ -5,22 +5,30 @@ namespace SmartFeedback.Scripts.Entities;
 
 public class ConnectTextsObjects
 {
-    [BsonId] public ObjectId Id { get; set; }
+    [BsonId] [BsonElement("_id")] public ObjectId Id { get; set; }
 
-    public bool IsDeleted { get; set; }
+    [BsonElement("is_deleted")] public bool IsDeleted { get; set; }
 
-    public ObjectId FirstTextObject { get; set; }
+    [BsonElement("first_text_object_id")] public string FirstTextObjectId { get; set; }
 
-    public ObjectId SecondTextObject { get; set; }
+    [BsonElement("second_text_object_id")] public string SecondTextObjectId { get; set; }
 
-    public double Coincidence { get; set; }
+    [BsonElement("similarity")] public double Similarity { get; set; }
 
-    public ConnectTextsObjects(ObjectId firstTextObject, ObjectId secondTextObject, double coincidence)
+    public ConnectTextsObjects(string firstTextObjectId, string secondTextObjectId, double similarity)
     {
-        FirstTextObject = firstTextObject;
-        SecondTextObject = secondTextObject;
-        Coincidence = coincidence;
+        FirstTextObjectId = firstTextObjectId;
+        SecondTextObjectId = secondTextObjectId;
+        Similarity = similarity;
     }
+
+    public ConnectTextsObjects(ObjectId firstTextObject, ObjectId secondTextObject, double similarity)
+    {
+        FirstTextObjectId = firstTextObject.ToString();
+        SecondTextObjectId = secondTextObject.ToString();
+        Similarity = similarity;
+    }
+
     public ConnectTextsObjects()
     {
     }

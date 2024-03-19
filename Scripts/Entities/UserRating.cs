@@ -6,26 +6,35 @@ namespace SmartFeedback.Scripts.Entities;
 
 public class UserRating
 {
-    [BsonId] public ObjectId Id { get; set; }
+    [BsonId]
+    [BsonElement("_id")]
+    public ObjectId Id { get; set; }
+    
+    [BsonElement("is_deleted")]
     public bool IsDeleted { get; set; }
+    
+    [BsonElement("user_id")]
     public string UserId { get; set; }
+    
+    [BsonElement("is_like")]
     public bool IsLike { get; set; }
-
-    public ObjectId TextObjectId { get; set; }
+    
+    [BsonElement("text_object_id")]
+    public string TextObjectId { get; set; }
 
     public UserRating(UserRatingModel userRatingModel)
     {
         Id = new ObjectId(userRatingModel.Id);
         UserId = userRatingModel.UserId;
         IsLike = userRatingModel.IsLike;
-        TextObjectId = new ObjectId(userRatingModel.TextObjectId);
+        TextObjectId = userRatingModel.TextObjectId;
     }
     
     public UserRating(string userId, bool isLike, string textObjectId)
     {
         UserId = userId;
         IsLike = isLike;
-        TextObjectId = new ObjectId(textObjectId);
+        TextObjectId = textObjectId;
     }
     
     public UserRating()

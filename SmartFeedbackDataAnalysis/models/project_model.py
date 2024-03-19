@@ -1,9 +1,8 @@
-class ProjectModel:
-    def __init__(self, data):
-        self.id = data.get('_id')
-        self.name = data.get('Name')
-        self.is_deleted = data.get('IsDeleted')
-        self.language = data.get('Language')
+from pydantic import BaseModel
 
-    def __str__(self):
-        return f'{self.id} | {self.name}'
+
+class ProjectModel(BaseModel):
+    id: int
+    name: str
+    is_deleted: bool
+    language: str
