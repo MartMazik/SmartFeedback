@@ -1,10 +1,11 @@
-from typing import List
-
 from fastapi import APIRouter
 
-from models.text_model import TextModel
-from services.preprocess_service import preprocess_one_text
-from services.comparison_service import compare_texts
+from models.project_model import ProjectModel
+from models.text_group_model import TextGroupModel
+from models.text_object_model import TextObjectModel
+from services.grouping_service import group_text_objects
+from services.preprocess_service import preprocess
+from services.searching_service import search_projects_method, search_texts_method
 
 router = APIRouter()
 
@@ -15,28 +16,33 @@ async def read_root():
 
 
 @router.post("/preprocessing/one")
-async def preprocessing_one(text_model: TextModel):
-    text_model.processed_content = preprocess_one_text(text_model.content)
-
-    return text_model
+async def preprocessing_one(text_object_model: TextObjectModel, project_model: ProjectModel):
+    return preprocess([text_object_model], project_model.language)[0]
 
 
 @router.post("/preprocessing/few")
-async def preprocessing_few(text_models: List[TextModel]):
-    for text_model in text_models:
-        text_model.processed_content = preprocess_one_text(text_model.content)
-
-    return text_models
+async def preprocessing_few(text_object_models: list[TextObjectModel], project_model: ProjectModel):
+    return preprocess(text_object_models, project_model.language)
 
 
 @router.post("/comparison")
-async def comparison(text_models: List[TextModel]):
-    return compare_texts(text_models)
+async def comparison(group_models: list[TextGroupModel], text_object_models: list[TextObjectModel],
+                     project_model: ProjectModel):
+    return group_text_objects(text_object_models, group_models, project_model.similarity_threshold)
 
 
-@router.post("/preprocessing-comparison")
-async def preprocessing_comparison(text_models: List[TextModel]):
-    for text_model in text_models:
-        text_model.processed_content = preprocess_one_text(text_model.content)
+@router.post("/preprocess-comparison")
+async def preprocessing_comparison(group_models: list[TextGroupModel], text_object_models: list[TextObjectModel],
+                                   project_model: ProjectModel):
+    processed_text_objects = preprocess(text_object_models, project_model.language)
+    return group_text_objects(processed_text_objects, group_models, project_model.similarity_threshold)
 
-    return compare_texts(text_models)
+
+@router.post("/search-in-text")
+async def search_text(text_group_models: list[TextGroupModel], project_model: ProjectModel, search_line: str):
+    return search_texts_method(text_group_models, search_line, project_model)
+
+
+@router.post("/search-in-project")
+async def search_project(project_models: list[ProjectModel], search_line: str):
+    return search_projects_method(project_models, search_line)

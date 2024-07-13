@@ -1,62 +1,93 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmartFeedback.Scripts.Interfaces;
 using SmartFeedback.Scripts.Models;
+using SmartFeedback.Scripts.Services.Authentication;
 
-namespace SmartFeedback.Scripts.Controllers
+namespace SmartFeedback.Scripts.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ProjectController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProjectController : ControllerBase
+    private readonly IProjectService _projectService;
+
+    public ProjectController(IProjectService projectService)
     {
-        private readonly IProjectService _projectService;
+        _projectService = projectService;
+    }
 
-        public ProjectController(IProjectService projectService)
-        {
-            _projectService = projectService;
-        }
+    [Authorize]
+    [HttpPost("get")]
+    public async Task<ProjectModel?> GetOne(string id)
+    {
+        return await _projectService.GetProject(id);
+    }
 
-        [HttpGet("get")]
-        public async Task<ProjectModel?> GetOne(string id)
-        {
-            return await _projectService.GetProject(id);
-        }
+    [Authorize]
+    [HttpPost("get-few")]
+    public async Task<List<ProjectModel>> GetFew(int page, int pageSize)
+    {
+        return await _projectService.GetFewProjects(page, pageSize);
+    }
 
-        [HttpGet("get-few")]
-        public async Task<List<ProjectModel>> GetMore(int page, int pageSize)
-        {
-            return await _projectService.GetFewProjects(page, pageSize);
-        }
+    [Authorize]
+    [HttpPost("create")]
+    public async Task<ProjectModel?> Create(ProjectModel project)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return null;
+        project.UserId = userId;
+        var temp = await _projectService.CreateProject(project);
+        return temp;
+    }
 
-        [HttpPost("add")]
-        public async Task<IActionResult> Post(ProjectModel project)
-        {
-            var temp = await _projectService.AddProject(project.Name);
-            if (temp == null) return BadRequest();
-            return Ok();
-        }
+    [Authorize]
+    [HttpPost("update")]
+    public async Task<ProjectModel?> Update(ProjectModel project)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return null;
+        project.UserId = userId;
+        var temp = await _projectService.UpdateProject(project);
+        return temp;
+    }
 
-        [HttpPut("update")]
-        public async Task<IActionResult> Put(ProjectModel project)
-        {
-            var temp = await _projectService.UpdateProject(project);
-            if (temp == null) return BadRequest();
-            return Ok();
-        }
+    [Authorize]
+    [HttpPost("delete")]
+    public async Task<IActionResult> Delete(string projectId)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return BadRequest();
+        var temp = await _projectService.DeleteProject(projectId, userId);
+        if (!temp) return BadRequest();
+        return Ok();
+    }
 
-        [HttpDelete("delete")]
-        public async Task<IActionResult> Delete(string id)
-        {
-            var temp = await _projectService.DeleteProject(id);
-            if (!temp) return BadRequest();
-            return Ok();
-        }
+    [Authorize]
+    [HttpPost("undelete")]
+    public async Task<IActionResult> UnDelete(string projectId)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return BadRequest();
+        var temp = await _projectService.UnDeleteProject(projectId, userId);
+        if (!temp) return BadRequest();
+        return Ok();
+    }
 
-        [HttpPut("undelete")]
-        public async Task<IActionResult> UnDelete(string id)
-        {
-            var temp = await _projectService.UnDeleteProject(id);
-            if (!temp) return BadRequest();
-            return Ok();
-        }
+    [Authorize]
+    [HttpPost("search")]
+    public async Task<List<ProjectModel>> Search(string searchString, int page, int pageSize)
+    {
+        return await _projectService.SearchProjects(searchString, page, pageSize);
+    }
+
+    [Authorize]
+    [HttpPost("get-user-projects")]
+    public async Task<List<ProjectModel>> GetUserProjects(int page, int pageSize)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return [];
+        return await _projectService.GetUserProjects(userId, page, pageSize);
     }
 }

@@ -10,32 +10,81 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a9d787f-66a7-4a87-96c5-4004f3f7a32f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/AppSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Controllers/UserController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Entities/TextGroup.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Entities/User.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Interfaces/IProcessingModuleService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Interfaces/IUserService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Logger.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Models/TextGroupModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Models/UserModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Services/Authentication/JwtAuthenticationService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Services/Module/ProcessingModuleService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/Services/MongoDB/UserService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/.idea/dictionaries/martm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/.idea/other.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/_dev/test_time_resource.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/models/text_group_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/services/searching_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/similarity_table.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/test_2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/test_e.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/copilot/chatSessions/blobs/version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/copilot/chatSessions/xd.lck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SmartFeedback/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Properties/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/ProjectController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/SearchTextsController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/TextObjectController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Controllers/TextObjectController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Controllers/UserRatingController.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/DataAnalysis/Preprocessing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/DataAnalysis/Preprocessing.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/DataAnalysis/TfidfAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/DataAnalysis/TfidfAlgorithm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Entities/ConnectTextsObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/ConnectTextsObjects.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Entities/ConnectTextsObjects.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Entities/Project.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/Project.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Entities/TextObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/TextObject.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Entities/UserRating.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Entities/UserRating.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/ExternalApi/ApiClient.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/ExternalApi/TextApi.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/IProjectService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/ISearchTextsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/ITextProcessService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/ITextRatingService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Interfaces/ITextService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Interfaces/ITextObjectService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Models/ProjectModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Models/ProjectModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Models/TextObjectModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Models/TextObjectModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Models/UserRatingModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Models/UserRatingModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/MongoDbSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/NUnit/ProjectServiceTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/ProjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/MongoDB/ProjectService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/SearchTextsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/MongoDB/SearchTextsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/SearchTextsService.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/TextObjectService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/MongoDB/TextObjectService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/TextRatingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/MongoDB/TextRatingService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Services/Process/TextProcessService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Services/Process/TextProcessService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Services/MongoDB/TextRatingService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Services/Process/TextProcessService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartFeedback.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedback.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/_dev/dev_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/_dev/dev_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/_dev/mongoEntities/connect_text_object.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/_dev/mongoEntities/group_text_objects.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/_dev/mongoEntities/group_text_objects.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/_dev/mongoEntities/text_object.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/_dev/mongoEntities/text_object.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/controllers/text_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/controllers/text_controller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/models/project_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/models/project_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/models/text_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/models/text_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/services/preprocessing_module.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/services/tfidf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/models/text_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/models/text_object_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/services/comparison_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/services/comparison_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/services/grouping_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/services/grouping_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/services/preprocess_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmartFeedbackDataAnalysis/services/preprocess_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="autoShow" value="false" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -62,9 +111,15 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/17.9.0/build/netcoreapp3.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7120b88f474759eeb74ce14c48ad3867b88659f9609b237158b7c9de8f7aa4/Python.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/afc79a643c83a2f09e3359363e90b5ffe9a5ff86d5f3237fad1dd6219117e5/IMongoCollection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Collections/Generic/List.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/1381d5ebd2ab1f292848d5b19b80cf71ac332508/src/libraries/System.Private.CoreLib/src/System/Runtime/ExceptionServices/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/5535e31a712343a63f5d7d796cd874e563e5ac14/src/libraries/Microsoft.Extensions.Primitives/src/StringValues.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/16cfb2fd32ad4cb8b7356ed38de4f1781a6908/38/ca3ef4ba/HttpClient.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3e6cfa91023d4528a577156f118914ae141b0/79/fc9bceed/JwtSecurityTokenHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Telegram Desktop/OrderService (2).cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Telegram Desktop/OrderService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Scripts/Program.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -87,6 +142,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.5347826&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -94,7 +150,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -102,8 +158,8 @@
       &quot;postgresql&quot;
     ],
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\martm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\martm\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\martm\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\martm\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
       &quot;C:\\Users\\martm\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
@@ -268,6 +324,55 @@
       <workItem from="1710779369084" duration="372000" />
       <workItem from="1710780199382" duration="62000" />
       <workItem from="1710804948412" duration="2858000" />
+      <workItem from="1711001974338" duration="377000" />
+      <workItem from="1711029001276" duration="6476000" />
+      <workItem from="1712134537604" duration="761000" />
+      <workItem from="1712176064702" duration="12014000" />
+      <workItem from="1712395326997" duration="4030000" />
+      <workItem from="1712670020915" duration="15000" />
+      <workItem from="1714370369144" duration="1860000" />
+      <workItem from="1714554293737" duration="2004000" />
+      <workItem from="1714573723635" duration="1894000" />
+      <workItem from="1714805956041" duration="4712000" />
+      <workItem from="1714824072207" duration="2529000" />
+      <workItem from="1715150869689" duration="7592000" />
+      <workItem from="1715318802211" duration="9337000" />
+      <workItem from="1715498862638" duration="5133000" />
+      <workItem from="1715583077330" duration="8267000" />
+      <workItem from="1715614111638" duration="2619000" />
+      <workItem from="1715676623465" duration="1198000" />
+      <workItem from="1715752825675" duration="14340000" />
+      <workItem from="1715796845698" duration="1248000" />
+      <workItem from="1715798398866" duration="631000" />
+      <workItem from="1715839844774" duration="27420000" />
+      <workItem from="1715933639330" duration="3907000" />
+      <workItem from="1715948103498" duration="753000" />
+      <workItem from="1716015455629" duration="1390000" />
+      <workItem from="1716098712360" duration="738000" />
+      <workItem from="1716273799333" duration="13337000" />
+      <workItem from="1716366990263" duration="1650000" />
+      <workItem from="1716530099609" duration="183000" />
+      <workItem from="1716530292548" duration="71000" />
+      <workItem from="1716530372523" duration="1817000" />
+      <workItem from="1716544930722" duration="2519000" />
+      <workItem from="1716569227083" duration="5254000" />
+      <workItem from="1716577172066" duration="35784000" />
+      <workItem from="1716667329237" duration="5805000" />
+      <workItem from="1716824622226" duration="14097000" />
+      <workItem from="1717051403275" duration="1785000" />
+      <workItem from="1717060364764" duration="10101000" />
+      <workItem from="1717313174676" duration="13344000" />
+      <workItem from="1717573416546" duration="8587000" />
+      <workItem from="1717652030931" duration="1415000" />
+      <workItem from="1717918436472" duration="1862000" />
+      <workItem from="1717999480789" duration="6866000" />
+      <workItem from="1719139138053" duration="15739000" />
+      <workItem from="1719780386442" duration="1046000" />
+      <workItem from="1719992180769" duration="6231000" />
+      <workItem from="1720118454709" duration="4648000" />
+      <workItem from="1720508470401" duration="1766000" />
+      <workItem from="1720549006039" duration="1198000" />
+      <workItem from="1720628023480" duration="2685000" />
     </task>
     <task id="LOCAL-00001" summary="Create Project">
       <option name="closed" value="true" />
@@ -292,6 +397,7 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnknownFeatures">
     <option featureType="dependencySupport" implementationName="executable:docker" />
     <option featureType="dependencySupport" implementationName="executable:kubectl" />
@@ -316,6 +422,25 @@
     <MESSAGE value="Create Project" />
     <MESSAGE value="Create Models" />
     <option name="LAST_COMMIT_MESSAGE" value="Create Models" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Scripts/Controllers/UserController.cs</url>
+          <line>21</line>
+          <properties documentPath="E:\projects\SmartFeedback\Scripts\Controllers\UserController.cs" containingFunctionPresentation="Method 'Login'">
+            <startOffsets>
+              <option value="577" />
+            </startOffsets>
+            <endOffsets>
+              <option value="578" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

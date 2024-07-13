@@ -1,27 +1,35 @@
-﻿using SmartFeedback.Scripts.Entities;
+﻿using System.Text.Json.Serialization;
+using SmartFeedback.Scripts.Entities;
 
 namespace SmartFeedback.Scripts.Models;
 
 public class ProjectModel
 {
+    [JsonPropertyName("id")]
     public string Id { get; set; } = "";
-    public string Name { get; set; }
     
+    [JsonPropertyName("user_id")]
+    public string UserId { get; set; } = "";
+    
+    [JsonPropertyName("title")]
+    public string Title { get; set; }
+    
+    [JsonPropertyName("language")]
+    public string Language { get; set; }
+
+    [JsonPropertyName("similarity_threshold")]
+    public double SimilarityThreshold { get; set; } = 0.5;
+
     public ProjectModel(Project project)
     {
         Id = project.Id.ToString() ?? string.Empty;
-        Name = project.Title;
+        Title = project.Title;
+        Language = project.Language;
+        SimilarityThreshold = project.SimilarityThreshold;
+        UserId = project.UserId.ToString() ?? string.Empty;
     }
 
-    public ProjectModel(string id, string name)
+    public ProjectModel()
     {
-        Id = id;
-        Name = name;
     }
-    public ProjectModel(string name)
-    {
-        Name = name;
-    }
-
-    public ProjectModel() { }
 }

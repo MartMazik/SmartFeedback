@@ -1,47 +1,136 @@
+using System.Diagnostics;
+using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
-using Python.Runtime;
+using SmartFeedback.Scripts;
 using SmartFeedback.Scripts.Interfaces;
+using SmartFeedback.Scripts.Services.Module;
 using SmartFeedback.Scripts.Services.MongoDB;
-using SmartFeedback.Scripts.Services.Process;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Добавляем контроллеры и связанные службы
-builder.Services.AddControllers();
+builder.Configuration.AddJsonFile("appsettings.json");
+AppSettings.Initialize(builder.Configuration);
 
-// Добавляем поддержку генерации документации Swagger
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-// Настройка подключения к MongoDB
-const string connectionString = "mongodb://localhost:27017/"; // TODO builder.Configuration.GetConnectionString("MongoDb");
-const string databaseName = "smart_feedback"; // TODO builder.Configuration.GetConnectionString("DatabaseName");
-
-builder.Services.AddSingleton<IMongoClient>(_ => new MongoClient(connectionString));
-builder.Services.AddScoped<IMongoDatabase>(_ =>
-{
-    var mongoClient = _.GetService<IMongoClient>();
-    return mongoClient.GetDatabase(databaseName);
-});
-
-// Добавляем ваш сервис MongoDB
-builder.Services.AddScoped<IProjectService, ProjectService>();
-builder.Services.AddScoped<ITextService, TextObjectService>();
-builder.Services.AddScoped<ITextRatingService, TextRatingService>();
-builder.Services.AddScoped<ISearchTextsService, SearchTextsService>();
-builder.Services.AddScoped<ITextProcessService, TextProcessService>();
+ConfigureServices(builder.Services);
+ConfigureAuthentication(builder.Services);
+ConfigureSwagger(builder.Services);
 
 var app = builder.Build();
 
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
+ConfigureMiddleware(app);
 
 app.Run();
+
+void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<IMongoClient>(_ =>
+    {
+        Debug.Assert(AppSettings.MongoDb != null, "AppSettings.MongoDb != null");
+        return new MongoClient(AppSettings.MongoDb.ConnectionString);
+    });
+
+    services.AddScoped(provider =>
+    {
+        var mongoClient = provider.GetRequiredService<IMongoClient>();
+        Debug.Assert(AppSettings.MongoDb != null, "AppSettings.MongoDb != null");
+        return mongoClient.GetDatabase(AppSettings.MongoDb.DatabaseName);
+    });
+
+    services.AddScoped<IUserService, UserService>();
+    services.AddScoped<IProjectService, ProjectService>();
+    services.AddScoped<ITextObjectService, TextObjectService>();
+    services.AddScoped<IProcessingModuleService, ProcessingModuleService>();
+
+    services.AddControllers();
+    services.AddHttpClient("PythonModuleClient",client =>
+    {
+        Debug.Assert(AppSettings.PythonModule != null, "AppSettings.PythonModule != null");
+        client.BaseAddress = new Uri(AppSettings.PythonModule.BaseUrl);
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    });
+    
+    // Добавьте эту строку для добавления службы CORS
+    services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAllOrigins", builder =>
+        {
+            builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+    });
+}
+
+void ConfigureAuthentication(IServiceCollection services)
+{
+    Debug.Assert(AppSettings.Authorization != null, "AppSettings.Authorization != null");
+    var authorizationSettings = AppSettings.Authorization;
+
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = authorizationSettings.Issuer,
+                ValidAudience = authorizationSettings.Audience,
+                IssuerSigningKey = authorizationSettings.GetKey
+            };
+        });
+}
+
+void ConfigureSwagger(IServiceCollection services)
+{
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerGen(options =>
+    {
+        options.SwaggerDoc("v1", new OpenApiInfo { Title = "SmartFeedback API", Version = "v1" });
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            In = ParameterLocation.Header,
+            Description = "Please enter into field the word 'Bearer' following by space and JWT",
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            BearerFormat = "JWT",
+            Scheme = "Bearer"
+        });
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                Array.Empty<string>()
+            }
+        });
+    });
+}
+
+void ConfigureMiddleware(WebApplication app)
+{
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseHttpsRedirection();
+    
+    // Добавьте эту строку для включения CORS
+    app.UseCors("AllowAllOrigins");
+    
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.MapControllers();
+}

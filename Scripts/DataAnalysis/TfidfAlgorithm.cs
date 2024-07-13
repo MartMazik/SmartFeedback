@@ -25,7 +25,7 @@ public static class TfidfAlgorithm
         var idf = CalculateIdf(documents, term);
         return tf * idf;
     }
-    
+
     private static double CalculateCosineSimilarity(double[] vector1, double[] vector2)
     {
         var dotProduct = vector1.Zip(vector2, (a, b) => a * b).Sum();
@@ -33,7 +33,7 @@ public static class TfidfAlgorithm
         var magnitude2 = Math.Sqrt(vector2.Sum(y => y * y));
         return dotProduct / (magnitude1 * magnitude2);
     }
-    
+
     private static double CompareTexts(TextObject text1, TextObject text2, List<TextObject> allDocuments)
     {
         var allTerms = text1.ProcessedContent.Union(text2.ProcessedContent).ToArray();
@@ -49,30 +49,4 @@ public static class TfidfAlgorithm
 
         return similarityPercentage;
     }
-
-    public static IEnumerable<ConnectTextsObjects> Start(List<TextObject> textObjects)
-    {
-        Console.WriteLine("Start CompareTexts in TfidfAlgorithm");
-        var tempTextObjects = new List<TextObject>(textObjects);
-        var connectTextsObjects = new List<ConnectTextsObjects>();
-        foreach (var text1 in textObjects)
-        {
-            foreach (var text2 in tempTextObjects)
-            {
-                if (text1.Id == text2.Id) continue;
-                var similarityPercentage = CompareTexts(text1, text2, textObjects);
-                connectTextsObjects.Add(new ConnectTextsObjects(text1.Id, text2.Id, similarityPercentage));
-            }
-
-            tempTextObjects.Remove(text1);
-
-            // Вывод процента выполнения
-            var percent = (double)(textObjects.Count - tempTextObjects.Count) / textObjects.Count * 100;
-            percent = Math.Round(percent, 2);
-            Console.WriteLine($"{percent}%");
-        }
-
-        return connectTextsObjects;
-    }
-
 }

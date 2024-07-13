@@ -1,110 +1,138 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmartFeedback.Scripts.Interfaces;
 using SmartFeedback.Scripts.Models;
+using SmartFeedback.Scripts.Services.Authentication;
 
-namespace SmartFeedback.Scripts.Controllers
+namespace SmartFeedback.Scripts.Controllers;
+
+[Route("api/text")]
+[ApiController]
+public class TextObjectController : ControllerBase
 {
-    [Route("api/text")]
-    [ApiController]
-    public class TextObjectController : ControllerBase
+    private readonly ITextObjectService _textObjectService;
+    private readonly IProcessingModuleService _processingModuleService;
+
+    public TextObjectController(ITextObjectService textObjectService, IProcessingModuleService processingModuleService)
     {
-        private readonly ITextService _textService;
-        private readonly ITextProcessService _textProcessService;
-
-        public TextObjectController(ITextService textService,
-            ITextProcessService textProcessService)
-        {
-            _textService = textService;
-            _textProcessService = textProcessService;
-        }
-
-        [HttpGet("get-few")]
-        public async Task<List<TextObjectModel>> GetAll(string projectId, int page, int pageSize)
-        {
-            return await _textService.GetProjectsTexts(projectId, page, pageSize);
-        }
-
-        [HttpGet("get")]
-        public async Task<TextObjectModel?> Get(string id)
-        {
-            return await _textService.GetText(id);
-        }
-
-        [HttpPost("add")]
-        public async Task<IActionResult> AddOne(TextObjectModel textObjectModel)
-        {
-            var temp = await _textService.AddOneText(textObjectModel);
-            if (temp == null) return BadRequest();
-            return Ok();
-        }
-
-        [HttpPost("add-few")]
-        public async Task<IActionResult> AddMore(List<TextObjectModel> textObjectModels)
-        {
-            var temp = await _textService.AddMoreText(textObjectModels);
-            if (temp.Count == 0) return BadRequest();
-            return Ok();
-        }
-
-        [HttpPut("update")]
-        public async Task<IActionResult> Update(TextObjectModel textObjectModel)
-        {
-            var temp = await _textService.UpdateText(textObjectModel);
-            if (temp == null) return BadRequest();
-            return Ok();
-        }
-
-        [HttpDelete("delete")]
-        public async Task<IActionResult> Delete(string id)
-        {
-            var temp = await _textService.DeleteText(id);
-            if (!temp) return BadRequest();
-            return Ok();
-        }
-
-        [HttpPut("undelete")]
-        public async Task<IActionResult> UnDelete(string id)
-        {
-            var temp = await _textService.UnDeleteText(id);
-            if (!temp) return BadRequest();
-            return Ok();
-        }
-
-        [HttpPost("upload")]
-        public async Task<IActionResult> UploadTexts(IFormFile csvFile, string projectId)
-        {
-            if (string.IsNullOrEmpty(projectId))
-            {
-                return BadRequest("ProjectId is required.");
-            }
-
-            var temp = await _textService.UploadTexts(csvFile, projectId);
-            if (!temp) return BadRequest("File is not valid.");
-            return Ok("File uploaded successfully.");
-        }
-
-        [HttpGet("reload_preprocessing")]
-        public async Task<IActionResult> ReloadPreprocessing(string projectId)
-        {
-            if (string.IsNullOrEmpty(projectId))
-            {
-                return BadRequest("ProjectId is required.");
-            }
-            var temp = await _textProcessService.UpdateTextPreprocessing(projectId);
-            if (!temp) return BadRequest("Text process service error.");
-            return Ok();
-        }
-        
-        [HttpGet("reload_compare_texts")]
-        public async Task<IActionResult> ReloadCompareTexts(string projectId)
-        {
-            if (string.IsNullOrEmpty(projectId))
-            {
-                return BadRequest("ProjectId is required.");
-            }
-            var temp = await _textProcessService.CompareTexts(projectId);
-            if (!temp) return BadRequest("Text compare texts error.");
-            return Ok();
-        }
+        _textObjectService = textObjectService;
+        _processingModuleService = processingModuleService;
     }
+
+    [Authorize]
+    [HttpPost("create")]
+    public async Task<string> Create(TextObjectModel textObject)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return string.Empty;
+        var textObjectModel = await _textObjectService.CreateOneText(textObject, userId);
+        return textObjectModel == null ? string.Empty : textObjectModel.Id;
+    }
+
+    [Authorize]
+    [HttpPost("create-few")]
+    public async Task<IActionResult> CreateFew(List<TextObjectModel> textObjects)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return BadRequest();
+        var textObjectModels = await _textObjectService.CreateFewText(textObjects, userId);
+        if (textObjectModels.Count <= 0) return BadRequest();
+        return Ok();
+    }
+
+    [Authorize]
+    [HttpPost("upload")]
+    public async Task<IActionResult> Upload(IFormFile csvFile, string projectId)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return BadRequest();
+        var result = await _textObjectService.UploadTexts(csvFile, projectId, userId);
+        if (!result) return BadRequest();
+        return Ok();
+    }
+
+    [Authorize]
+    [HttpPost("delete")]
+    public async Task<IActionResult> Delete(string textId)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return BadRequest();
+        var result = await _textObjectService.DeleteText(textId, userId);
+        if (!result) return BadRequest();
+        return Ok();
+    }
+
+    [Authorize]
+    [HttpPost("undelete")]
+    public async Task<IActionResult> UnDelete(string textId)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return BadRequest();
+        var result = await _textObjectService.UnDeleteText(textId, userId);
+        if (!result) return BadRequest();
+        return Ok();
+    }
+
+    [Authorize]
+    [HttpPost("update")]
+    public async Task<TextObjectModel?> Update(TextObjectModel textObject)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return null;
+        var result = await _textObjectService.UpdateText(textObject, userId);
+        return result;
+    }
+
+    [Authorize]
+    [HttpPost("get")]
+    public async Task<TextObjectModel?> GetOne(string textId)
+    {
+        var textObjectModel = await _textObjectService.GetText(textId);
+        return textObjectModel;
+    }
+
+    [Authorize]
+    [HttpPost("get-by-project")]
+    public async Task<List<TextGroupModel>> GetByProject(string projectId, int page = 1, int pageSize = 20)
+    {
+        var textGroupModels = await _textObjectService.GetTextsByProject(projectId, page, pageSize);
+        return textGroupModels;
+    }
+
+    [Authorize]
+    [HttpPost("search")]
+    public async Task<List<TextGroupModel>> Search(string projectId, string searchString, int page = 1,
+        int pageSize = 20)
+    {
+        var textGroupModels = await _textObjectService.SearchTexts(projectId, searchString, page, pageSize);
+        return textGroupModels;
+    }
+
+    [Authorize]
+    [HttpPost("get-by-group")]
+    public async Task<TextGroupModel?> GetByGroup(string groupId, int page = 1, int pageSize = 20)
+    {
+        var textGroupModel = await _textObjectService.GetTextsFromGroup(groupId, page, pageSize);
+        return textGroupModel;
+    }
+
+    /*[Authorize]
+    [HttpPost("get-similar")]
+    public async Task<List<TextObjectModel>> GetSimilar(string textId, int page = 1, int pageSize = 20)
+    {
+        var textObjectModels = await _textObjectService.GetSimilarTexts(textId, page, pageSize);
+        return textObjectModels;
+    }*/
+
+    [Authorize]
+    [HttpPost("set-rating")]
+    public async Task<IActionResult> SetRating(string textId, bool isLike)
+    {
+        var userId = JwtAuthenticationService.GetUserIdAsync(Request);
+        if (userId == null) return BadRequest();
+        var result = await _textObjectService.SetRating(textId, isLike, userId);
+        if (!result) return BadRequest();
+        return Ok();
+    }
+
 }

@@ -1,5 +1,4 @@
 ﻿using SmartFeedback.Scripts.Entities;
-using SmartFeedback.Scripts.ExternalApi;
 
 namespace SmartFeedback.Scripts.DataAnalysis;
 
